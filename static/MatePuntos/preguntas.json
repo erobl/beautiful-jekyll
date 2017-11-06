@@ -1,0 +1,31 @@
+{
+    "preguntas": [
+        {
+            "pregunta": "Considere la función $$f(x) = x^2 + 1$$ ¿En qué punto se alcanza el mínimo global?",
+            "incorrectas": [
+                "$$(0,0)$$",
+                "$$(1,1)$$",
+                "$$(1,0)$$"
+            ],
+            "correcta": "$$(0,1)$$"
+        },
+        {
+            "pregunta": "Si \\((4,-5)\\) es el centro de una circunferencia de radio 2, entonces, ¿Cuál es la ecuación de esa circunferencia?",
+            "incorrectas": [
+                "$$(x+4)^2+(y+5)^2=4$$",
+                "$$(x+4)^2+(y-5)^2=4$$",
+                "$$(x-4)^2+(y-5)^2=4$$"
+            ],
+            "correcta": "$$(x-4)^2+(y+5)^2=4$$"
+        },
+        {
+            "pregunta": "Consirere las siguientes dos rectas determinadas por: \\(y=-x\\) y \\(y=3\\). ¿Cuál o cuáles de estas rectas son secantes a la circunferencia dada por \\(x^2+y^2=8\\)?", 
+            "incorrectas": [
+                "Ambas",
+                "Ninguna",
+                "Solo la recta \\(y=3\\)"
+            ],
+            "correcta": "Solo la recta \\(y=-x\\)"
+        }
+    ]
+}

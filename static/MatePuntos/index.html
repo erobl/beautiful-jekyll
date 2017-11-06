@@ -3,7 +3,11 @@
         <script src="jquery.js"></script>
         <script src="index.js"></script>
         <script src="modal.js"></script>
+        <script src="preguntas.js"></script>
         <link rel="stylesheet" type="text/css" href="index.css">
+        <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
     </head>
@@ -93,8 +97,8 @@
     <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <p id="Pregunta">Pregunta de ejemplo</p>
+            <p id="Pregunta">Pregunta de ejemplo
+            $$\int_0^\infty f(x) dx = 1$$</p>
 
             <div id="botonesRespuesta"> 
                 <button id="a"> Respuesta Correcta </button>
@@ -102,6 +106,14 @@
                 <button id="c"> Respuesta Incorrecta </button>
                 <button id="d"> Respuesta Incorrecta </button>
             </div>
+        </div>
+    </div>
+
+    <div id="winModal" class="modal">
+        <div class="modal-content">
+            <p id="winContent">
+
+            </p> 
         </div>
     </div>
 

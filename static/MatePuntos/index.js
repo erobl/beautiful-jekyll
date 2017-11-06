@@ -1,12 +1,12 @@
 var coloreshtml = {
-    r: "#801D15",
-    b: "#1F1959",
+    r: "#811305",
+    b: "#192760",
     w: "#FFFFFF"
 }
 
 var colorescuad = {
-    r: "#AA4139",
-    b: "#393276",
+    r: "#FF1E00",
+    b: "#214597",
     w: "#FFFFFF"
 }
 
@@ -18,6 +18,20 @@ var score = {
     b: 0
 }
 var n = 4;
+var correctas = 0;
+var totales = 0;
+
+function check_grid() {
+    return grid.map(function(x) {
+        return x.map(function(y) {
+            return y != 'w';
+        }).reduce(function(sum, value) {
+            return sum && value;
+        }, true);
+    }).reduce(function(sum, value) {
+        return sum && value;
+    }, true);
+}
 
 function actualizar_marcador() {
    $("#scorej").html(score['b']); 
@@ -29,48 +43,83 @@ function checksquare(x, y, color) {
         grid[x][y] = color
         $("#sq" + x + "\\," + y).attr("fill", colorescuad[color])
         ++score[color];
-        actualizar_marcador();
+
+        return true;
+
     }
+    return false;
 }
 
 function checkhorizontal(x, y, color) {
     if( x > 0 ) {
-        checksquare(x-1,y,color);
+        var a = checksquare(x-1,y,color);
+    } else {
+        var a = false;
     }
     if( x < n-1 ) {
-        checksquare(x,y,color);
+        var b = checksquare(x,y,color);
+    } else {
+        var b = false;
     }
+
+    return a || b
 }
 
 function checkvertical(x, y, color) {
     if( y > 0 ) {
-        checksquare(x,y-1,color);
+        var a = checksquare(x,y-1,color);
+    } else {
+        var a = false;
     }
     if( y < n-1 ) {
-        checksquare(x,y,color);
+        var b = checksquare(x,y,color);
+    } else {
+        var b = false;
     }
+
+    return a || b
 }
 
 function playv(x, y, color) {
     vline[x][y] = color;
-    checkvertical(parseInt(y),parseInt(x),color);
     $("#vline" + x + "\\," + y).attr("stroke", coloreshtml[color]);
     $("#vline" + x + "\\," + y).off("mouseenter");
     $("#vline" + x + "\\," + y).off("mouseleave");
     $("#vline" + x + "\\," + y).off("click");
+    return checkvertical(parseInt(y),parseInt(x),color);
 }
 
-function playh(x,y,color) {
+function playh(x, y, color) {
     console.log(color);
     hline[x][y] = color;
-    checkhorizontal(parseInt(x),parseInt(y),color);
     $("#hline" + x + "\\," + y).attr("stroke", coloreshtml[color]);
     $("#hline" + x + "\\," + y).off("mouseenter");
     $("#hline" + x + "\\," + y).off("mouseleave");
     $("#hline" + x + "\\," + y).off("click");
+    return checkhorizontal(parseInt(x),parseInt(y),color);
+}
+
+function complete_square(callback) {
+    actualizar_marcador();
+    if(!check_grid()) {
+        callback();
+    } else {
+        if(score['r'] == score['b']) {
+            $("#winContent").html("¡Hubo un empate!<br />Tu puntaje es " + correctas + "/" + totales);
+        } else if(score['r'] < score['b']) {
+            $("#winContent").html("¡Has ganado!<br />Tu puntaje es " + correctas + "/" + totales);
+        } else {
+            $("#winContent").html("Has perdido...<br />Tu puntaje es " + correctas + "/" + totales);
+        }
+
+        document.getElementById('winModal').style.display = "block";
+    }
 }
 
 function AI() {
+    if(check_grid()) {
+        return;
+    }
     if(Math.random() > 0.5) {
         // horizontal
         var x = Math.floor(hline.length*Math.random());
@@ -79,7 +128,9 @@ function AI() {
         if(hline[x][y] != 'w') {
             AI();
         } else {
-            playh(x,y,'r');
+            if(playh(x,y,'r')) {
+                complete_square(AI);
+            }
         }
     } else {
         // vertical
@@ -89,7 +140,9 @@ function AI() {
         if(vline[x][y] != 'w') {
             AI();
         } else {
-            playv(x,y,'r');
+            if(playv(x,y,'r')) {
+                complete_square(AI);
+            }
         }
     }
 }
@@ -98,14 +151,16 @@ function line_click() {
     var id = $(this).attr("id");
     var idx = id.split("line")[1].split(",");
     
-    if(id.split("line")[0] == "v") {
-        playv(idx[0],idx[1],'b');
-    } else {
-        playh(idx[0],idx[1],'b');
-    }
-
     disable_click();
     $("#responderPregunta").prop("disabled", false);
+    if(id.split("line")[0] == "v") {
+        var another_turn = playv(idx[0],idx[1],'b');
+    } else {
+        var another_turn = playh(idx[0],idx[1],'b');
+    }
+    if(another_turn) {
+        complete_square(enable_click);
+    }
 }
 
 function line_hover() {
