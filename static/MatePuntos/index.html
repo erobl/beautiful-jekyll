@@ -4,12 +4,12 @@
         <script src="index.js"></script>
         <script src="modal.js"></script>
         <script src="preguntas.js"></script>
+        <script src="board.js"></script>
         <link rel="stylesheet" type="text/css" href="index.css">
         <script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
         </script>
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-
     </head>
     <div class="tablero tabjugador">
         Jugador: <div id="scorej">0</div>
@@ -19,75 +19,6 @@
     </div>
 
     <div id="board">
-        <svg width=460 height=460>
-            <!-- cuadrados -->
-            <rect id="sq0,0" x="5" y="5" fill="#FFF" stroke-width="0" width="150" height="150" />
-            <rect id="sq0,1" x="155" y="5" fill="#FFF" stroke-width="0" width="150" height="150" />
-            <rect id="sq0,2" x="305" y="5" fill="#FFF" stroke-width="0" width="150" height="150" />
-            <rect id="sq1,0" x="5" y="155" fill="#FFF" stroke-width="0" width="150" height="150" />
-            <rect id="sq1,1" x="155" y="155" fill="#FFF" stroke-width="0" width="150" height="150" />
-            <rect id="sq1,2" x="305" y="155" fill="#FFF" stroke-width="0" width="150" height="150" />
-            <rect id="sq2,0" x="5" y="305" fill="#FFF" stroke-width="0" width="150" height="150" />
-            <rect id="sq2,1" x="155" y="305" fill="#FFF" stroke-width="0" width="150" height="150" />
-            <rect id="sq2,2" x="305" y="305" fill="#FFF" stroke-width="0" width="150" height="150" />
-
-            <!--horizontales -->
-            <line id="hline0,0" x1="5" x2="155" y1="5" y2="5" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-            <line id="hline0,1" x1="155" x2="305" y1="5" y2="5" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-            <line id="hline0,2" x1="305" x2="455" y1="5" y2="5" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-
-            <line id="hline1,0" x1="5" x2="155" y1="155" y2="155" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-            <line id="hline1,1" x1="155" x2="305" y1="155" y2="155" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-            <line id="hline1,2" x1="305" x2="455" y1="155" y2="155" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-
-            <line id="hline2,0" x1="5" x2="155" y1="305" y2="305" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-            <line id="hline2,1" x1="155" x2="305" y1="305" y2="305" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-            <line id="hline2,2" x1="305" x2="455" y1="305" y2="305" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-
-            <line id="hline3,0" x1="5" x2="155" y1="455" y2="455" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-            <line id="hline3,1" x1="155" x2="305" y1="455" y2="455" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-            <line id="hline3,2" x1="305" x2="455" y1="455" y2="455" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-
-            <!-- verticales -->
-            <line id="vline0,0" x1="5" x2="5" y1="5" y2="155" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-            <line id="vline0,1" x1="5" x2="5" y1="155" y2="305" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-            <line id="vline0,2" x1="5" x2="5" y1="305" y2="455" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-
-            <line id="vline1,0" x1="155" x2="155" y1="5" y2="155" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-            <line id="vline1,1" x1="155" x2="155" y1="155" y2="305" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-            <line id="vline1,2" x1="155" x2="155" y1="305" y2="455" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-
-
-            <line id="vline2,0" x1="305" x2="305" y1="5" y2="155" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-            <line id="vline2,1" x1="305" x2="305" y1="155" y2="305" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-            <line id="vline2,2" x1="305" x2="305" y1="305" y2="455" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-
-            <line id="vline3,0" x1="455" x2="455" y1="5" y2="155" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-            <line id="vline3,1" x1="455" x2="455" y1="155" y2="305" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-            <line id="vline3,2" x1="455" x2="455" y1="305" y2="455" stroke-width="8" stroke-opacity="1" stroke="#FFF"> </line>
-            
-            <circle r="5" fill="#000" cx="5" cy="5"> </circle>
-            <circle r="5" fill="#000" cx="155" cy="5"> </circle>
-            <circle r="5" fill="#000" cx="305" cy="5"> </circle>
-            <circle r="5" fill="#000" cx="455" cy="5"> </circle>
-            <circle r="5" fill="#000" cx="5" cy="155"> </circle>
-            <circle r="5" fill="#000" cx="155" cy="155"> </circle>
-            <circle r="5" fill="#000" cx="305" cy="155"> </circle>
-            <circle r="5" fill="#000" cx="455" cy="155"> </circle>
-            <circle r="5" fill="#000" cx="5" cy="305"> </circle>
-            <circle r="5" fill="#000" cx="155" cy="305"> </circle>
-            <circle r="5" fill="#000" cx="305" cy="305"> </circle>
-            <circle r="5" fill="#000" cx="455" cy="305"> </circle>
-            <circle r="5" fill="#000" cx="5" cy="305"> </circle>
-            <circle r="5" fill="#000" cx="155" cy="305"> </circle>
-            <circle r="5" fill="#000" cx="305" cy="305"> </circle>
-            <circle r="5" fill="#000" cx="455" cy="305"> </circle>
-            <circle r="5" fill="#000" cx="5" cy="455"> </circle>
-            <circle r="5" fill="#000" cx="155" cy="455"> </circle>
-            <circle r="5" fill="#000" cx="305" cy="455"> </circle>
-            <circle r="5" fill="#000" cx="455" cy="455"> </circle>
-
-        </svg>
     </div>
 
     <div id="botones">

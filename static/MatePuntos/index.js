@@ -195,12 +195,3 @@ function enable_click() {
         }
     }
 }
-
-function config() {
-    $("line").attr("stroke", coloreshtml['w']);
-    $("rect").attr("fill", colorescuad['w']);
-}
-
-$( document ).ready(function() {
-    config();
-})
