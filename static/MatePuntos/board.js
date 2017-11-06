@@ -19,6 +19,9 @@ function draw_board(x,y) {
     var offsetx = Math.floor(wwidth/2 - dot_lenx*x/2);
     var offsety = Math.floor(wheight/2 - dot_leny*y/2);
 
+    var dot_size = side_len*0.015;
+    var line_width = dot_size*2*0.7;
+
     for(var i = 0; i < x; i++) {
         for(var j = 0; j < y; j++) {
             var square = document.createElementNS(ns, 'rect');
@@ -40,7 +43,7 @@ function draw_board(x,y) {
             line.setAttributeNS(null, "y1", offsety + j*dot_lenx);
             line.setAttributeNS(null, "y2", offsety + j*dot_lenx);
             line.setAttributeNS(null, "stroke", coloreshtml[hline[j][i]]);
-            line.setAttributeNS(null, "stroke-width", "8");
+            line.setAttributeNS(null, "stroke-width", line_width);
             line.setAttributeNS(null, "id", "hline" + j + "," + i);
             svg.appendChild(line);
         }
@@ -54,7 +57,7 @@ function draw_board(x,y) {
             line.setAttributeNS(null, "y1", offsety + j*dot_lenx);
             line.setAttributeNS(null, "y2", offsety + (j+1)*dot_lenx);
             line.setAttributeNS(null, "stroke", coloreshtml[vline[i][j]]);
-            line.setAttributeNS(null, "stroke-width", "8");
+            line.setAttributeNS(null, "stroke-width", line_width);
             line.setAttributeNS(null, "id", "vline" + i + "," + j);
             svg.appendChild(line);
         }
@@ -66,7 +69,7 @@ function draw_board(x,y) {
             circ.setAttributeNS(null, "cx", offsetx + i*dot_lenx);
             circ.setAttributeNS(null, "cy", offsety + j*dot_leny);
             circ.setAttributeNS(null, "fill", "#000");
-            circ.setAttributeNS(null, "r", "5");
+            circ.setAttributeNS(null, "r", dot_size);
             svg.appendChild(circ);
         }
     }
