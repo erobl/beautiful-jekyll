@@ -45,6 +45,10 @@
     margin-top: 5%
 }
 
+#figure {
+    text-align:center;
+}
+
 button {
     background-color: #4CAF50;
     border: none;
@@ -67,6 +71,26 @@ p {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
     font-size: 1.5em;
+}
+
+ol li {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 2em;
+}
+ 
+#figure {
+    max-width: 100%;
+}
+
+img {
+    max-width: 100%;
 }
 
 /* The Modal (background) */
@@ -107,6 +131,10 @@ p {
     cursor: pointer;
 }
 
+#tutModal {
+    display: block;
+}
+
 @media only screen and (max-width: 767px) {
     /* For mobile phones: */
     .textotablero {
@@ -115,6 +143,14 @@ p {
 
     p {
         font-size: 1em;
+    }
+
+    ol li {
+        font-size: 1em;
+    }
+
+    h2 {
+        font-size: 1.5em;
     }
 
     button {

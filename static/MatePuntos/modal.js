@@ -7,9 +7,13 @@ function close_modal() {
 }
 
 
+
 $(document).ready(function() {
+    $("#btnCerrar").click(function() {
+        document.getElementById("tutModal").style.display = "none";
+    });
+
     $("#responderPregunta").click(function() {
         preguntar();
-        open_modal();
     });
 })

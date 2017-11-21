@@ -26,6 +26,16 @@
                 "Solo la recta \\(y=3\\)"
             ],
             "correcta": "Solo la recta \\(y=-x\\)"
+        },
+        {
+            "pregunta": "Considere la siguiente figura, en la que se representa el triángulo \\(ABC\\) (formado por cuatro triángulos equiláteros) y la medida de uno de los triángulos.", 
+            "figura":"figures/p12.png",
+            "incorrectas": [
+                "\\(32\\)",
+                "\\(48\\)",
+                "\\(72\\)"
+            ],
+            "correcta": "\\(24\\)"
         }
     ]
 }

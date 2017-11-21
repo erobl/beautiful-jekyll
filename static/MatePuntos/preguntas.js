@@ -38,6 +38,14 @@ function preguntar() {
     $("#Pregunta").html(pregunta.pregunta);
     MathJax.Hub.Queue(["Typeset",MathJax.Hub,"#Pregunta"]);
 
+    if(pregunta.figura) {
+        console.log("ouch");
+        $("#figure").html("<img src="+pregunta.figura+" />");
+    } else {
+        console.log("why");
+        $("#figure").html("");
+    }
+
     var numCorrecta = Math.floor(Math.random()*(pregunta.incorrectas.length+1))
 
     $("#botonesRespuesta").html("");
@@ -61,6 +69,8 @@ function preguntar() {
         }
         $("#botonesRespuesta").append(button);
         MathJax.Hub.Queue(["Typeset",MathJax.Hub,"#botonesRespuesta"]);
+
+        open_modal();
     }
 }
 

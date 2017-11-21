@@ -105,9 +105,9 @@ function complete_square(callback) {
         callback();
     } else {
         if(score['r'] == score['b']) {
-            $("#winContent").html("¡Hubo un empate!<br />Tu puntaje es " + correctas + "/" + totales);
+            $("#winContent").html("&iexcl;Hubo un empate!<br />Tu puntaje es " + correctas + "/" + totales);
         } else if(score['r'] < score['b']) {
-            $("#winContent").html("¡Has ganado!<br />Tu puntaje es " + correctas + "/" + totales);
+            $("#winContent").html("&iexcl;Has ganado!<br />Tu puntaje es " + correctas + "/" + totales);
         } else {
             $("#winContent").html("Has perdido...<br />Tu puntaje es " + correctas + "/" + totales);
         }
@@ -159,6 +159,7 @@ function line_click() {
         var another_turn = playh(idx[0],idx[1],'b');
     }
     if(another_turn) {
+        $("#responderPregunta").prop("disabled", true);
         complete_square(enable_click);
     }
 }
