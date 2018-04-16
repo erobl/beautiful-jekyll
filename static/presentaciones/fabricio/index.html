@@ -1,0 +1,272 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+                    <h3>Análisis de los Comentarios en el Facebook de Fabricio Alvarado</h3>
+                    Edgar Robles
+                </section>
+                <section>
+                    <h3>Pregunta 1: Fabricio, Fauricio, Fabrizio, etc?</h3>
+                    Usamos una medida que cuenta la cantidad de ediciones necesarias para llegar de una palabra a otra: <br>
+                    perro ⇨ pero con 1 cambio <br>
+                    pedro ⇨ perro con 1 cambio <br>
+                    medio ⇨ miedo con 2 cambios
+                </section>
+                <section>
+                    <h3>Resultados</h3>
+                    Tomamos las palabras más comunes que están a menos de 3 cambios de "Fabricio"
+                    <img src="fauricio.svg">
+                </section>
+                <section>
+                    <h3>Pregunta 2: Palabras más comunes en el texto</h3>
+                    Tomamos el conteo usado para crear el ejemplo pasado: <br>
+                    <img src="palabras.svg">
+                </section>
+                <section>
+                    <section>
+                    <h3>Pregunta 3: Comentarios más comunes</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Comentario</th>
+                                <th>Frecuencia</th>
+                            </tr>
+                        <thead>
+                        <tbody>
+                            <tr> 
+                                <td>Fabricio presidente</td>
+                                <td>3012</td>
+                            </tr>
+                            <tr> 
+                                <td>Fabricio Alvarado presidente</td>
+                                <td>927</td>
+                            </tr>
+                            <tr> 
+                                <td>Amén</td>
+                                <td>733</td>
+                            </tr>
+                            <tr> 
+                                <td>Excelente</td>
+                                <td>643</td>
+                            </tr>
+                            <tr> 
+                                <td>Fabricio presidente</td>
+                                <td>603</td>
+                            </tr>
+                            <tr> 
+                                <td>Así es</td>
+                                <td>431</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                <section>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Comentario</th>
+                                <th>Frecuencia</th>
+                            </tr>
+                        <thead>
+                        <tbody>
+                            <tr> 
+                                <td>Adelante Fabricio</td>
+                                <td>421</td>
+                            </tr>
+                            <tr> 
+                                <td>Bendiciones</td>
+                                <td>322</td>
+                            </tr>
+                            <tr> 
+                                <td>Tiene mi voto</td>
+                                <td>315</td>
+                            </tr>
+                            <tr> 
+                                <td>Vamos fabricio</td>
+                                <td>268</td>
+                            </tr>
+                            <tr> 
+                                <td>#FabricioPresidente</td>
+                                <td>223</td>
+                            </tr>
+                            <tr> 
+                                <td>Adelante</td>
+                                <td>208</td>
+                            </tr>
+                            <tr> 
+                                <td>Vamos fabricio</td>
+                                <td>204</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                </section>
+                <section>
+                    <h3>Pregunta 4: Palabras alrededor de Dios</h3>
+                    <img src="dios.svg">
+                </section>
+                <section>
+                    <section>
+                    <h3>Análisis de temas</h3>
+                    <ul>
+                        <li><i>Latent Dirichlet Allocation</i></li>
+                        <li>Trata un tema como una distribución probabilística de palabras que pertenecen a este</li>
+                        <li>Responde la pregunta <i>"si se usa esta palabra, la probabilidad de que sea parte del tema es x%"</i>.</li>
+                        <li>Podemos encontrar a cuáles temas pertenecen cada tema</li>
+                        <li>Podemos agrupar comentarios</li>
+                        <li>Este análisis se hizo tratando todos los comentarios de una persona como un sólo documento.</li>
+                    </ul>
+                    </section>
+                    <section>
+                        <h3>Principales temas</h3>
+                        <img src="temas.svg">
+                    </section>
+                    <section>
+                        <h3>Temas interesantes</h3>
+                            <table border="1" class="dataframe">
+                              <thead>
+                                <tr style="text-align: right;">
+                                  <th></th>
+                                  <th>Palabra 1</th>
+                                  <th>Palabra 2</th>
+                                  <th>Palabra 3</th>
+                                  <th>Palabra 4</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th>Tema 2</th>
+                                  <td>politica</td>
+                                  <td>habla</td>
+                                  <td>mas</td>
+                                  <td>solo</td>
+                                </tr>
+                                <tr>
+                                  <th>Tema 3</th>
+                                  <td>usted</td>
+                                  <td>derechos</td>
+                                  <td>personas</td>
+                                  <td>matrimonio</td>
+                                </tr>
+                                <tr>
+                                  <th>Tema 8</th>
+                                  <td>costa</td>
+                                  <td>rica</td>
+                                  <td>pais</td>
+                                  <td>valores</td>
+                                </tr>
+                              </tbody>
+                        </table>
+                    </section>
+                    <section>
+                            <table border="1" class="dataframe">
+                              <thead>
+                                <tr style="text-align: right;">
+                                  <th></th>
+                                  <th>Palabra 1</th>
+                                  <th>Palabra 2</th>
+                                  <th>Palabra 3</th>
+                                  <th>Palabra 4</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th>Tema 9</th>
+                                  <td>dios</td>
+                                  <td>fabricio</td>
+                                  <td>adelante</td>
+                                  <td>bendiciones</td>
+                                </tr>
+                                <tr>
+                                  <th>Tema 11</th>
+                                  <td>catolicos</td>
+                                  <td>iglesia</td>
+                                  <td>cristianos</td>
+                                  <td>evangelicos</td>
+                                </tr>
+                                <tr>
+                                  <th>Tema 13</th>
+                                  <td>fabricio</td>
+                                  <td>voto</td>
+                                  <td>presidente</td>
+                                  <td>alvarado</td>
+                                </tr>
+                              </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h3>Tema 2</h3>
+                        <div class="fig-container"
+                             data-file="d3/graph.html?g=topic2.json&s=1400"></div> 
+                    </section>
+                    <section>
+                        <h3>Tema 3</h3>
+                        <div class="fig-container"
+                             data-file="d3/graph.html?g=topic3.json&s=900"></div> 
+                    </section>
+                    <section>
+                        <h3>Tema 8</h3>
+                        <div class="fig-container"
+                             data-file="d3/graph.html?g=topic8.json&s=1000"></div> 
+                    </section>
+                    <section>
+                        <h3>Tema 9</h3>
+                        <div class="fig-container"
+                             data-file="d3/graph.html?g=topic9.json&s=1400"></div> 
+                    </section>
+                    <section>
+                        <h3>Tema 11</h3>
+                        <div class="fig-container"
+                             data-file="d3/graph.html?g=topic11.json&s=800"></div> 
+                    </section>
+                    <section>
+                        <h3>Tema 13</h3>
+                        <div class="fig-container"
+                             data-file="d3/graph.html?g=topic13.json&s=1400"></div> 
+                    </section>
+                </section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'node_modules/reveald3/reveald3.js' }
+				]
+			});
+		</script>
+	</body>
+</html>
